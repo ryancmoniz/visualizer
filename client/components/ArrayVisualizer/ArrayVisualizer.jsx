@@ -11,7 +11,7 @@ function ArrayVisualizer() {
 
   const resetArray = () => {
     const array = [];
-    for (let i = 0; i < 250; i += 1) {
+    for (let i = 0; i < 100; i += 1) {
       array.push(randomIntFromRange(10, 1000));
     }
     setArray(array);
@@ -21,14 +21,24 @@ function ArrayVisualizer() {
     const animations = bubbleSortHelper(numberArray);
     for (let i = 0; i < animations.length; i += 1) {
       const bars = document.getElementsByClassName('bar');
-      setTimeout(() => {
-        const h1 = bars[animations[i][1]].style.height;
-        const h0 = bars[animations[i][0]].style.height;
-        bars[animations[i][1]].style.backgroundColor = 'red';
-        bars[animations[i][0]].style.backgroundColor = 'red';
-        bars[animations[i][0]].style.height = h1;
-        bars[animations[i][1]].style.height = h0;
-      }, i * 2);
+      const [barOneIdx, barTwoIdx] = animations[i];
+      const barOneStyle = bars[barOneIdx].style;
+      const barTwoStyle = bars[barTwoIdx].style;
+      const isColorChange = i % 3 !== 2;
+      if (isColorChange) {
+        const color = i % 3 === 0 ? 'purple' : 'turquoise';
+        setTimeout(() => {
+          barOneStyle.backgroundColor = color;
+          barTwoStyle.backgroundColor = color;
+        }, (i + 1) * 10);
+      } else {
+        setTimeout(() => {
+          const h1 = barOneStyle.height;
+          const h2 = barTwoStyle.height;
+          barOneStyle.height = h2;
+          barTwoStyle.height = h1;
+        }, (i + 1) * 10);
+      }
     }
   };
 
