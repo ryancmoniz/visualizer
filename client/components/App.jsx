@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BubbleSort from './BubbleSort/bubbleSort';
 
 class App extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class App extends Component {
   }
 
   render() {
-    return <div>Hello from React!</div>;
+    return <BubbleSort />;
   }
 }
 
