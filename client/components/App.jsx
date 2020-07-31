@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BubbleSort from './BubbleSort/bubbleSort';
+import ArrayVisualizer from './ArrayVisualizer/ArrayVisualizer';
 
 class App extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class App extends Component {
   }
 
   render() {
-    return <BubbleSort />;
+    return <ArrayVisualizer />;
   }
 }
 
