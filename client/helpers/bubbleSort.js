@@ -1,17 +1,32 @@
-const bubble = (inputArr, animations = []) => {
-  const newArray = inputArr;
-  const len = inputArr.length;
-  for (let i = 0; i < len; i += 1) {
-    for (let j = 0; j < len; j += 1) {
-      if (newArray[j] > newArray[j + 1]) {
-        const tmp = newArray[j];
-        newArray[j] = newArray[j + 1];
-        newArray[j + 1] = tmp;
-        animations.push([j, j + 1]);
+const swap = (i, j, array) => {
+  const newArr = array;
+  const temp = newArr[j];
+
+  newArr[j] = newArr[i];
+  newArr[i] = temp;
+  return newArr;
+};
+
+const bubbleSort = (array, animations = []) => {
+  let isSorted = false;
+  let counter = 0;
+
+  while (!isSorted) {
+    isSorted = true;
+    for (let i = 0; i < array.length - 1 - counter; i += 1) {
+      animations.push([i, i + 1]);
+      animations.push([i, i + 1]);
+      if (array[i] > array[i + 1]) {
+        swap(i, i + 1, array);
+        animations.push([i, i + 1]);
+        isSorted = false;
+      } else {
+        animations.push([i, i]);
       }
     }
+    counter += 1;
   }
   return animations;
 };
 
-export default bubble;
+export default bubbleSort;
