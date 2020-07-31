@@ -3,6 +3,9 @@
   margin: 0 auto;
   justify-content: space-between;
   align-items: flex-end;
+  top: 50px;
+  position: absolute;
+  max-width: 95vw;
 }
 
 .bar {
